@@ -16,8 +16,10 @@ var accessLog = fs.createWriteStream('access.log',{flags:'a'});
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -38,6 +40,12 @@ app.use(session({
   resave: settings.resave,
   saveUninitialized : settings.saveUninitialized
 }));
+
+app.use(function(req,res,next){
+  console.log('获取了首页');
+  res.sendFile(path.join(__dirname,'/public/index.html'));
+  next();
+});
 
 app.use('/', routes);
 

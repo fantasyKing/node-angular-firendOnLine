@@ -1,0 +1,29 @@
+{
+  "name": "node-angular-FriendLine",
+  "description": "我的第一个个人网站。",
+  "main": "",
+  "authors": [
+    "zhanggj <zhanggjwei@163.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "angular",
+    "bootstrap",
+    "restful"
+  ],
+  "moduleType": [],
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.0",
+    "angular-ui-router": "^0.2.18"
+  }
+}
