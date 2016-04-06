@@ -1,6 +1,7 @@
 angular
   .module('myApp', [
     'myApp.controller',
+    'myApp.service',
     'myApp.animation',
     'myApp.directive',
     'ui.router',

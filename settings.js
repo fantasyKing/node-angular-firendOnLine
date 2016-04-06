@@ -5,5 +5,6 @@ module.exports = {
   port: 27017,
   resave : false,
   saveUninitialized : false,
-  url : 'mongodb://localhost/friendLine'
+  url : 'mongodb://localhost/friendLine',
+  poolsize:5
 };

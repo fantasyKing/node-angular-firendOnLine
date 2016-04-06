@@ -15,7 +15,7 @@ angular.module('myApp.controller',[])
     },100);
     $scope.user = {};
   })
-  .controller('registerCtrl',function($scope,$state,$timeout){
+  .controller('registerCtrl',function($scope,$state,$timeout,registerService){
       $scope.toLogin = function(){
         $scope.showflag = false;
         $timeout(function(){
@@ -27,4 +27,11 @@ angular.module('myApp.controller',[])
           $scope.showflag = true;
       },100);
       $scope.user = {};
+      $scope.register = function(){
+        registerService.register($scope.user).success(function(data){
+          console.log(data);
+        }).error(function(err){
+          console.log(err);
+        });
+      };
   });
