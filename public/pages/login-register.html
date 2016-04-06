@@ -1,41 +1,41 @@
 <div class="container">
   <h1>Welcome</h1>
-  <form class="slide" ng-if="showflag" novalidate>
+  <form class="slide" ng-if="showflag" name="registerForm" novalidate>
     <div class="form-group has-success has-feedback">
-      <label class="sr-only control-label" for="inputSuccess2">Input with success</label>
+      <label class="control-label" for="inputSuccess2" ng-show="registerForm.username.$error.required && !registerForm.username.$focused && registerForm.username.$dirty">给自己起个名字吧！</label>
       <div class="input-group">
         <div class="input-group-addon">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         </div>
-        <input type="text" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="用户名">
-        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+        <input my-validate name="username" ng-model="user.username" type="text" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="用户名" required />
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="registerForm.username.$error.required && !registerForm.username.$focused && registerForm.username.$dirty"></span>
+        <span id="inputSuccess2Status" class="sr-only" ng-show="registerForm.username.$error.required && !registerForm.username.$focused && registerForm.username.$dirty">(success)</span>
       </div>
     </div>
     <div class="form-group has-success has-feedback">
-      <label class="sr-only control-label" for="inputSuccess2">Input with success</label>
+      <label class="control-label" for="inputSuccess2" ng-show="registerForm.password.$error.required && !registerForm.password.$focused && registerForm.password.$dirty">密码，在哪里？</label>
       <div class="input-group">
         <div class="input-group-addon">
           <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
         </div>
-        <input type="password" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="密码">
-        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+        <input my-validate name="password" ng-model="user.password" type="password" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="密码" required>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="registerForm.password.$error.required && !registerForm.password.$focused && registerForm.password.$dirty"></span>
+        <span id="inputSuccess2Status" class="sr-only" ng-show="registerForm.password.$error.required && !registerForm.password.$focused && registerForm.password.$dirty">(success)</span>
       </div>
     </div>
     <div class="form-group has-success has-feedback">
-      <label class="sr-only control-label" for="inputSuccess2">Input with success</label>
+      <label class="control-label" for="inputSuccess2" ng-show="registerForm.repeatpass.$error.required && !registerForm.repeatpass.$focused && registerForm.repeatpass.$dirty">请输入确认密码</label>
       <div class="input-group">
         <div class="input-group-addon">
           <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
         </div>
-        <input type="password" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="再次输入密码">
-        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+        <input my-validate name="repeatpass" ng-model="user.repeatpass" type="password" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="再次输入密码" required />
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="registerForm.repeatpass.$error.required && !registerForm.repeatpass.$focused && registerForm.repeatpass.$dirty"></span>
+        <span id="inputSuccess2Status" class="sr-only" ng-show="registerForm.repeatpass.$error.required && !registerForm.repeatpass.$focused && registerForm.repeatpass.$dirty">(success)</span>
       </div>
     </div>
     <div class="form-group">
-      <button type="button" class="btn btn-default btn-lg" ng-click="register()">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</button>
+      <button type="button" class="btn btn-default btn-lg" ng-click="register()">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</button>
     </div>
     <div class="form-group">
       <a type="button" ng-click="toLogin()" style="cursor: pointer;float: right;color: grey;pointer: inherit;font-size: 20px;">已有账号登录</a>

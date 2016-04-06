@@ -1,34 +1,33 @@
 <div class="container">
   <h1>Welcome</h1>
   <form class="slide" ng-if="showflag" name="loginform" novalidate>
-    <div class="form-group has-feedback">
-      <label class="control-label" for="inputSuccess2" ng-show="loginform.username.$error.required && !loginform.username.$focused && loginform.username.$dirty">Input with success</label>
+    <div class="form-group has-success has-feedback">
+      <label class="control-label" for="inputSuccess2" ng-show="loginform.username.$error.required && !loginform.username.$focused && loginform.username.$dirty">给自己起个名字吧！</label>
       <div class="input-group">
         <div class="input-group-addon">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         </div>
-        <input myValidate ng-model="user.username" name="username" type="text" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="用户名" required />
-        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="loginform.username.$error.required && !loginform.username.$focused && loginform.username.$dirty"></span>
-        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+        <input my-validate ng-model="user.username" name="username" type="text" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="用户名" required />
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="loginform.username.$error.required && !loginform.username.$focused && loginform.username.$dirty"></span>
+        <span id="inputSuccess2Status" class="sr-only" ng-show="loginform.username.$error.required && !loginform.username.$focused && loginform.username.$dirty">(success)</span>
       </div>
     </div>
     <div class="form-group has-success has-feedback">
-      <label class="sr-only control-label" for="inputSuccess2">Input with success</label>
+      <label class="control-label" for="inputSuccess2" ng-show="loginform.password.$error.required && !loginform.password.$focused && loginform.password.$dirty">密码，你在哪里？</label>
       <div class="input-group">
         <div class="input-group-addon">
           <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
         </div>
-        <input type="password" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="密码">
-        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+        <input my-validate ng-model="user.password" type="password" name="password" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="密码" required />
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="loginform.password.$error.required && !loginform.password.$focused && loginform.password.$dirty"></span>
+        <span id="inputSuccess2Status" class="sr-only" ng-show="loginform.password.$error.required && !loginform.password.$focused && loginform.password.$dirty">(success)</span>
       </div>
     </div>
     <div class="form-group">
-      <button type="button" class="btn btn-default btn-lg">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+      <button type="button" class="btn btn-default btn-lg" ng-disabled="loginform.$invalid">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
     </div>
     <div class="form-group">
-      <button type="button" class="btn btn-default btn-lg" ng-click="goRegister()">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</button>
+      <button type="button" class="btn btn-default btn-lg" ng-click="goRegister()">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</button>
     </div>
   </form>
-  <input type="button" name="name" value="sdfdsfsd" myValidate />
 </div>

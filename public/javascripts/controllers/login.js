@@ -26,4 +26,5 @@ angular.module('myApp.controller',[])
       $timeout(function(){
           $scope.showflag = true;
       },100);
+      $scope.user = {};
   });
