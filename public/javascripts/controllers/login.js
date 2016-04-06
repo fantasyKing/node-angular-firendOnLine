@@ -13,6 +13,7 @@ angular.module('myApp.controller',[])
     $timeout(function(){
         $scope.showflag = true;
     },100);
+    $scope.user = {};
   })
   .controller('registerCtrl',function($scope,$state,$timeout){
       $scope.toLogin = function(){

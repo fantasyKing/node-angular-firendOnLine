@@ -2,6 +2,7 @@ angular
   .module('myApp', [
     'myApp.controller',
     'myApp.animation',
+    'myApp.directive',
     'ui.router',
     'ngAnimate'
   ])
