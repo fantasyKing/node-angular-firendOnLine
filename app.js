@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 // app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images','fav.png')));
 app.use(logger('dev'));
 app.use(logger({stream:accessLog}));
 app.use(bodyParser.json());
@@ -42,7 +42,6 @@ app.use(session({
 }));
 
 app.use(function(req,res,next){
-  console.log('获取了首页');
   res.sendFile(path.join(__dirname,'/public/index.html'));
   next();
 });
@@ -51,7 +50,7 @@ app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error('请求找不到了');
   err.status = 404;
   next(err);
 });
@@ -63,9 +62,9 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.json('error', {
-      message: err.message,
-      error: err
+    res.json({
+      'errcode': 1,
+      'error':err.message
     });
   });
 }
@@ -74,9 +73,9 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.json('error', {
-    message: err.message,
-    error: {}
+  res.json({
+    'errcode': 1,
+    'error':err.message
   });
 });
 

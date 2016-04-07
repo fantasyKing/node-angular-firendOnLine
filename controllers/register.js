@@ -6,9 +6,13 @@ exports.register = function(req,res,next){
   var user = req.body;
   _user.insertUser(user,function(err,product){
     if(err){
-       next(err);
+      return next(err);
     }
-    req.session.user = product.loginName;
-    res.json({msg:'注册成功'});
+    req.session.user = product;
+    res.json({
+      'errcode':0,
+      'errmsg':'注册成功',
+      'data':[product]
+    });
   });
 };

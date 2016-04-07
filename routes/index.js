@@ -7,4 +7,15 @@ router.post('/register', function(req, res, next) {
   register.register(req,res,next);
 });
 
+
+
+
+
+//没有匹配的路由，有err参数应该不会走这个中间件了
+router.use(function(req,res,next){
+  console.log(req.url);
+  console.log('没有找到路由');
+  next();
+});
+
 module.exports = router;

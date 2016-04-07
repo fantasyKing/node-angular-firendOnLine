@@ -10,7 +10,7 @@ angular
   .run(function($state){
     console.log('.run方法执行了');
   })
-  .config(function($stateProvider,$urlRouterProvider){
+  .config(function($stateProvider,$urlRouterProvider,$httpProvider){
     $stateProvider
       .state('login',{
         url:'/login',
@@ -30,4 +30,16 @@ angular
       });
 
       $urlRouterProvider.otherwise('/login/loginlo');
+      $httpProvider.defaults.transformResponse.push(function(response){
+        if(response.hasOwnProperty('errcode')){
+          if(response.errcode !==0){
+            throw response;
+          }else{
+            return response.data;
+          }
+        }else{
+          return response;
+        }
+      });
+      $httpProvider.interceptors.push('myHttpIntercepter');
   });
