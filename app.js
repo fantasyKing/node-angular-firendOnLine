@@ -62,9 +62,10 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
+    console.log(err.message);
     res.json({
       'errcode': 1,
-      'error':err.message
+      'errmsg':err.message
     });
   });
 }
@@ -75,7 +76,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json({
     'errcode': 1,
-    'error':err.message
+    'errmsg':err.message
   });
 });
 

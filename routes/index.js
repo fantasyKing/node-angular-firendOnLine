@@ -7,7 +7,9 @@ router.post('/register', function(req, res, next) {
   register.register(req,res,next);
 });
 
-
+router.post('/checkByLoginname',function(req,res,next){
+  register.getUserByName(req,res,next);
+});
 
 
 

@@ -9,3 +9,7 @@ exports.insertUser = function(obj,callback){
   });
   user.save(callback);
 };
+
+exports.getUserByName = function(name,callback){
+  User.findOne({'name':name},callback);
+};

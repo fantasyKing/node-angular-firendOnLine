@@ -4,15 +4,31 @@ var util = require('util');
 
 exports.register = function(req,res,next){
   var user = req.body;
-  _user.insertUser(user,function(err,product){
+  _user.insertUser(user,function(err,doc){
     if(err){
       return next(err);
     }
-    req.session.user = product;
+    req.session.user = doc;
     res.json({
       'errcode':0,
-      'errmsg':'注册成功',
-      'data':[product]
+      'errmsg':'',
+      'data':[doc]
+    });
+  });
+};
+
+exports.getUserByName = function(req,res,next){
+  var loginname = req.body.loginname;
+  _user.getUserByName(loginname,function(err,doc){
+    if(err){
+      return next(err);
+    }
+    console.log('getUserByName方法返回：');
+    console.log(doc);
+    res.json({
+      'errcode':0,
+      'errmsg':'',
+      'data':[doc]
     });
   });
 };

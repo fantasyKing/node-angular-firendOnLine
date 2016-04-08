@@ -3,6 +3,7 @@
   <form class="slide" ng-if="showflag" name="registerForm" novalidate>
     <div class="form-group has-success has-feedback">
       <label class="control-label" for="inputSuccess2" ng-show="registerForm.username.$error.required && !registerForm.username.$focused && registerForm.username.$dirty">给自己起个名字吧！</label>
+      <label class="control-label" for="inputSuccess2" ng-show="registerForm.username.$repeated && !registerForm.username.$focused && registerForm.username.$dirty">这么巧有人叫这个名字了！</label>
       <div class="input-group">
         <div class="input-group-addon">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>

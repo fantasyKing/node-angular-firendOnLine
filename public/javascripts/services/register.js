@@ -4,8 +4,8 @@ angular.module('myApp.service',[])
       register:function(data){
         return $http.post('/register', data);
       },
-      checkByLoginname:function(){
-        return $http.get('/checkByLoginname');
+      checkByLoginname:function(data){
+        return $http.post('/checkByLoginname',data);
       }
     };
   });
