@@ -15,7 +15,7 @@ angular.module('myApp.controller',[])
     },100);
     $scope.user = {};
   })
-  .controller('registerCtrl',function($scope,$state,$timeout,registerService){
+  .controller('registerCtrl',function($scope,$state,$timeout,registerService,$window){
       $scope.toLogin = function(){
         $scope.showflag = false;
         $timeout(function(){
@@ -29,7 +29,11 @@ angular.module('myApp.controller',[])
       $scope.user = {};
       $scope.register = function(){
         registerService.register($scope.user).success(function(data){
-          console.log(data);
+          if(data[0] && data[0]!='null'){
+            $window.alert('注册成功！');
+          }else{
+            $window.alert('注册失败！');
+          }
         }).error(function(err){
           console.log(err);
         });

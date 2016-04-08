@@ -3,14 +3,14 @@
   <form class="slide" ng-if="showflag" name="registerForm" novalidate>
     <div class="form-group has-success has-feedback">
       <label class="control-label" for="inputSuccess2" ng-show="registerForm.username.$error.required && !registerForm.username.$focused && registerForm.username.$dirty">给自己起个名字吧！</label>
-      <label class="control-label" for="inputSuccess2" ng-show="registerForm.username.$repeated && !registerForm.username.$focused && registerForm.username.$dirty">这么巧有人叫这个名字了！</label>
+      <label class="control-label" for="inputSuccess2" ng-show="!registerForm.username.$error.required && registerForm.username.$repeated && !registerForm.username.$focused && registerForm.username.$dirty">这么巧有人叫这个名字了！</label>
       <div class="input-group">
         <div class="input-group-addon">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         </div>
         <input my-validate name="username" ng-model="user.username" type="text" class="form-control input-lg" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="用户名" required />
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="registerForm.username.$error.required && !registerForm.username.$focused && registerForm.username.$dirty"></span>
-        <span id="inputSuccess2Status" class="sr-only" ng-show="registerForm.username.$error.required && !registerForm.username.$focused && registerForm.username.$dirty">(success)</span>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(registerForm.username.$error.required || registerForm.username.$repeated) && !registerForm.username.$focused && registerForm.username.$dirty"></span>
+        <span id="inputSuccess2Status" class="sr-only" ng-show="registerForm.username.$error.required && !registerForm.username.$focused && registerForm.username.$dirty">(failed)</span>
       </div>
     </div>
     <div class="form-group has-success has-feedback">
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="form-group">
-      <button type="button" class="btn btn-default btn-lg" ng-click="register()">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</button>
+      <button type="button" class="btn btn-default btn-lg" ng-click="register()" ng-disabled="registerForm.$invalid">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</button>
     </div>
     <div class="form-group">
       <a type="button" ng-click="toLogin()" style="cursor: pointer;float: right;color: grey;pointer: inherit;font-size: 20px;">已有账号登录</a>

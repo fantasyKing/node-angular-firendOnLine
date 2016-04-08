@@ -19,18 +19,19 @@ angular.module('myApp.directive',[])
             var formname = ctrl.$$parentForm.$name;
             if(formname === 'registerForm' && ctrl.$name === 'username'){
               var user = scope.user;
-              registerService.checkByLoginname({loginname:user.username}).success(function(data){
-                if(!data[0] || data[0] != 'null'){
-                  scope.$apply(function() {ctrl.$repeated =true;});
-                  element.parent().parent().removeClass('has-success');
-                  element.parent().parent().addClass('has-error');
-                }
-              }).error(function(data){
-                console.log('出错了');
-                ctrl.$repeated = false;
-              });
+              if(user.username){
+                registerService.checkByLoginname({loginname:user.username}).success(function(data){
+                  if(data[0] && data[0] != 'null'){
+                    ctrl.$repeated =true;
+                    element.parent().parent().removeClass('has-success');
+                    element.parent().parent().addClass('has-error');
+                  }
+                }).error(function(data){
+                  console.log('出错了');
+                  ctrl.$repeated = false;
+                });
+              }
             }
-
           }
         });
       }
