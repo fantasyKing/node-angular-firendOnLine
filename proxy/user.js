@@ -11,5 +11,5 @@ exports.insertUser = function(obj,callback){
 };
 
 exports.getUserByName = function(name,callback){
-  User.findOne({'name':name},callback);
+  User.findOne({'loginName':name},{'loginName':1,_id:0},callback);
 };

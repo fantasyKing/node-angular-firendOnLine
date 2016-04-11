@@ -9,7 +9,7 @@ exports.register = function(req,res,next){
       return next(err);
     }
     req.session.user = doc;
-    res.json({
+    return res.json({
       'errcode':0,
       'errmsg':'',
       'data':[doc]
@@ -25,7 +25,7 @@ exports.getUserByName = function(req,res,next){
     }
     console.log('getUserByName方法返回：');
     console.log(doc);
-    res.json({
+    return res.json({
       'errcode':0,
       'errmsg':'',
       'data':[doc]

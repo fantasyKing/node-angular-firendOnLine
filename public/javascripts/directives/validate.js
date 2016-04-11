@@ -1,39 +1,81 @@
 angular.module('myApp.directive',[])
-  .directive('myValidate',function(registerService){
+  .directive('myCheckregister',function(registerService){
     return {
       restrict: 'A',
       require: 'ngModel',
       link:function(scope,element,attrs,ctrl){
+        ctrl.$repeat = false;
+        element.bind('change',function(e){
+          var loginname = scope.user.username;
+          if(loginname){
+            registerService.checkByLoginname({loginname:scope.user.username}).success(function(data){
+              if(data[0] && data[0] != 'null'){
+                ctrl.$repeat = true;
+                element.parent().parent().removeClass('has-success');
+                element.parent().parent().addClass('has-error');
+              }else{
+                ctrl.$repeat = false;
+                element.parent().parent().removeClass('has-error');
+                element.parent().parent().addClass('has-success');
+              }
+            }).error(function(data){
+              console.log('出错了');
+            });
+          }else{
+            scope.$apply(function(){ctrl.$repeat = false;});
+          }
+        });
+      }
+    };
+  })
+  .directive('myPassvalidate',function(){
+    return{
+      restrict: 'A',
+      require: 'ngModel',
+      link: function(scope,element,attrs,ctrl){
+        ctrl.$equal = false;
+        element.bind('change',function(e){
+          e.preventDefault();
+          var pass = scope.user.password;
+          var repeatpass = scope.user.repeatpass;
+          scope.$apply(function(){
+            if(pass && repeatpass){
+              if(pass !== repeatpass){
+                ctrl.$equal = true;
+                element.parent().parent().removeClass('has-success');
+                element.parent().parent().addClass('has-error');
+              }else{
+                ctrl.$equal = false;
+                element.parent().parent().removeClass('has-error');
+                element.parent().parent().addClass('has-success');
+              }
+            }
+            if(!repeatpass){
+              ctrl.$equal = false;
+            }
+          });
+        });
+      }
+    };
+  })
+  .directive('myRequired',function(){
+    return{
+      restrict: 'A',
+      require: 'ngModel',
+      link: function(scope,element,attrs,ctrl){
         ctrl.$focused = false;
-        ctrl.$repeated = false;
         element.bind('focus', function(evt) {
           scope.$apply(function() {ctrl.$focused = true;});
-            element.parent().parent().removeClass('has-error');
-            element.parent().parent().addClass('has-success');
-        }).bind('blur', function(evt) {
+      }).bind('blur', function(evt) {
           scope.$apply(function() {ctrl.$focused = false;});
           if(ctrl.$error.required && ctrl.$dirty){
             element.parent().parent().removeClass('has-success');
             element.parent().parent().addClass('has-error');
           }else{
-            var formname = ctrl.$$parentForm.$name;
-            if(formname === 'registerForm' && ctrl.$name === 'username'){
-              var user = scope.user;
-              if(user.username){
-                registerService.checkByLoginname({loginname:user.username}).success(function(data){
-                  if(data[0] && data[0] != 'null'){
-                    ctrl.$repeated =true;
-                    element.parent().parent().removeClass('has-success');
-                    element.parent().parent().addClass('has-error');
-                  }
-                }).error(function(data){
-                  console.log('出错了');
-                  ctrl.$repeated = false;
-                });
-              }
-            }
+            element.parent().parent().removeClass('has-error');
+            element.parent().parent().addClass('has-success');
           }
-        });
+      });
       }
     };
   });
