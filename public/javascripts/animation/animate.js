@@ -8,16 +8,26 @@ angular.module('myApp.animation',[])
           left:'150px'
         },100,done);
       },
-      move:function(element,done){
-        console.log("move方法执行了");
-         jQuery(element).fadeIn(1000, done);
-      },
       leave:function(element,done){
         jQuery(element)
         .animate({
           width:'0px',
           left:'600px'
         },100,done);
+      }
+    };
+  })
+  .animation('.mybounce',function(){
+    return{
+      enter:function(element,done){
+        element.addClass('animated bounceInRight').once('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+          element.removeClass('animated bounceInRight');
+        });
+      },
+      leave:function(element,done){
+        element.addClass('animated bounceOutRight').once('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+          element.removeClass('animated bounceOutRight');
+        });
       }
     };
   });
