@@ -14,7 +14,7 @@ angular.module('myApp.controller',[])
       $scope.alertShow = false;
     });
   })
-  .controller('loginloCtrl',function($scope,$state,$timeout,loginService){
+  .controller('loginloCtrl',function($scope,$state,$timeout,loginService,userSaveService){
     $scope.goRegister = function(){
       $scope.showflag = false;
       $timeout(function(){
@@ -33,6 +33,7 @@ angular.module('myApp.controller',[])
       loginService.login(data).success(function(data){
         var result = data[0];
         if(result.flag){
+          userSaveService.save(result.data);
           $scope.tilte = '成功';
           $scope.msg= '登录成功！';
           $scope.alertType = 'alert-success';
