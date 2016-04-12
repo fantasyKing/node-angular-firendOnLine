@@ -4,8 +4,8 @@ var utility = require('utility');
 
 exports.insertUser = function(obj,callback){
   var user = new User({
-    loginName:obj.username,
-    pass:obj.password
+    loginName:obj.loginName,
+    pass:obj.pass
   });
   user.save(callback);
 };

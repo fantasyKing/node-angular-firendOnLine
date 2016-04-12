@@ -20,14 +20,10 @@ angular.module('myApp.animation',[])
   .animation('.mybounce',function(){
     return{
       enter:function(element,done){
-        element.addClass('animated bounceInRight').once('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
-          element.removeClass('animated bounceInRight');
-        });
+        element.addClass('animated bounceInRight');
       },
       leave:function(element,done){
-        element.addClass('animated bounceOutRight').once('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
-          element.removeClass('animated bounceOutRight');
-        });
+        element.addClass('animated bounceOutRight');
       }
     };
   });

@@ -41,11 +41,28 @@ angular.module('myApp.controller',[])
       $scope.user = {};
       $scope.register = function(){
         if(registerService.checkValues($scope)){
-          registerService.register($scope.user).success(function(data){
-            if(data[0] && data[0]!='null'){
-              $window.alert('注册成功！');
+          var submitData = {};
+          submitData.loginName = $scope.user.username;
+          submitData.pass = $scope.user.password;
+          submitData.name = $scope.user.username;
+          registerService.register(submitData).success(function(data){
+            var resData = data[0];
+            if(resData.flag){
+              $scope.tilte = '成功';
+              $scope.msg= '注册成功！';
+              $scope.alertType = 'alert-success';
+              $scope.$emit('showAlert',$scope.tilte,$scope.msg,$scope.alertType);
+              $timeout(function(){
+                $scope.$emit('hideAlert',$scope);
+              },3000);
             }else{
-              $window.alert('注册失败！');
+              $scope.tilte = '警告';
+              $scope.msg= resData.msg;
+              $scope.alertType = 'alert-danger';
+              $scope.$emit('showAlert',$scope.tilte,$scope.msg,$scope.alertType);
+              $timeout(function(){
+                $scope.$emit('hideAlert',$scope);
+              },3000);
             }
           }).error(function(err){
             console.log(err);

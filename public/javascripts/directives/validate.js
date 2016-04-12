@@ -6,9 +6,9 @@ angular.module('myApp.directive',[])
       link:function(scope,element,attrs,ctrl){
         ctrl.$repeat = false;
         element.bind('change',function(e){
-          var loginname = scope.user.username;
-          if(loginname){
-            registerService.checkByLoginname({loginname:scope.user.username}).success(function(data){
+          var loginName = scope.user.username;
+          if(loginName){
+            registerService.checkByLoginname({'loginName':loginName}).success(function(data){
               if(data[0] && data[0] != 'null'){
                 ctrl.$repeat = true;
                 element.parent().parent().removeClass('has-success');

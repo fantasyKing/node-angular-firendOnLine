@@ -41,15 +41,11 @@ app.use(session({
   saveUninitialized : settings.saveUninitialized
 }));
 
-app.use(function(req,res,next){
-  res.sendFile(path.join(__dirname,'/public/index.html'));
-  next();
-});
-
 app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  console.log('进入了404');
   var err = new Error('请求找不到了');
   err.status = 404;
   next(err);
@@ -61,6 +57,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    console.log('开发环境为development');
     res.status(err.status || 500);
     console.log(err.message);
     res.json({
@@ -73,6 +70,7 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+  console.log('最后返回错误');
   res.status(err.status || 500);
   res.json({
     'errcode': 1,

@@ -11,7 +11,9 @@ router.post('/checkByLoginname',function(req,res,next){
   register.getUserByName(req,res,next);
 });
 
-
+router.get('/',function(req,res,next){
+  res.sendFile(path.join(__dirname,'/public/index.html'));
+});
 
 //没有匹配的路由，有err参数应该不会走这个中间件了
 router.use(function(req,res,next){
