@@ -27,6 +27,11 @@ angular
         url:'/register',
         templateUrl: '/pages/login-register.html',
         controller: 'registerCtrl'
+      })
+      .state('main',{
+        url:'/main',
+        templateUrl:'/pages/main.html',
+        controller:'mainCtrl'
       });
 
       $urlRouterProvider.otherwise('/login/loginlo');

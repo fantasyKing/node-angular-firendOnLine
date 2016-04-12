@@ -41,6 +41,7 @@ angular.module('myApp.controller',[])
           $timeout(function(){
             $scope.$emit('hideAlert',$scope);
           },3000);
+          $state.go('main');
         }else{
           $scope.tilte = '失败';
           $scope.msg= '登录失败！';
