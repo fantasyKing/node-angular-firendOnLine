@@ -14,7 +14,7 @@ angular.module('myApp.controller',[])
       $scope.alertShow = false;
     });
   })
-  .controller('loginloCtrl',function($scope,$state,$timeout){
+  .controller('loginloCtrl',function($scope,$state,$timeout,loginService){
     $scope.goRegister = function(){
       $scope.showflag = false;
       $timeout(function(){
@@ -26,6 +26,34 @@ angular.module('myApp.controller',[])
         $scope.showflag = true;
     },100);
     $scope.user = {};
+    $scope.login = function(){
+      var data = {};
+      data.loginName = $scope.user.username;
+      data.pass = $scope.user.password;
+      loginService.login(data).success(function(data){
+        var result = data[0];
+        if(result.flag){
+          $scope.tilte = '成功';
+          $scope.msg= '登录成功！';
+          $scope.alertType = 'alert-success';
+          $scope.$emit('showAlert',$scope.tilte,$scope.msg,$scope.alertType);
+          $timeout(function(){
+            $scope.$emit('hideAlert',$scope);
+          },3000);
+        }else{
+          $scope.tilte = '失败';
+          $scope.msg= '登录失败！';
+          $scope.alertType = 'alert-danger';
+          $scope.$emit('showAlert',$scope.tilte,$scope.msg,$scope.alertType);
+          $timeout(function(){
+            $scope.$emit('hideAlert',$scope);
+          },3000);
+        }
+      }).error(function(data){
+
+      });
+
+    };
   })
   .controller('registerCtrl',function($scope,$rootScope,$state,$timeout,registerService,$window){
       $scope.toLogin = function(){
