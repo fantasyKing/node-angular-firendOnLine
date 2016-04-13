@@ -1,8 +1,40 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body{
+    padding: 50px;
+    font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+a{
+    color: #00b7ff;
+}
+
+.mybar{
+    float: left;
+    width: 80%;
+    padding-left: 30%;
+}
+.mybar p{
+    float: left;
+    position: relative;
+    width: 420px;
+}
+.mybar div{
+    float: left;
+}
+.mybar button{
+    float: left;
+    position: relative;
+    left: 20%;
+    margin-top: 7px;
+}
+.myperson a{
+    display: block;
+    padding-top: 4px;
+}
+.mytitle{
+    position: relative;
+}
+.mybrand{
+    padding: 8px 8px;
+    width: 55px;
+    margin-top: -5px;
 }
