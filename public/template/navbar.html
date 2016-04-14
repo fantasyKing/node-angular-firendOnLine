@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default navbar-fixed-top" ng-if="barShowFlag">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="width: 55px;margin-top: -5px;">
+        <img class="img-responsive img-circle" alt="Brand" src="/images/brand/eye.jpg">
+      </a>
+    </div>
+    <div class="mybar">
+      <p class="navbar-text text-center">{{barTitle}}</p>
+      <div class="mytitle">
+        <a class="navbar-brand mybrand" href="#">
+          <img class="img-responsive img-rounded" alt="Brand" src="{{barUserImage}}">
+        </a>
+        <div class="myperson">
+          <a href="#">{{barUsername}}</a>
+        </div>
+      </div>
+      <button type="button" class="btn btn-default navbar-btns">{{barBtnMsg}}</button>
+    </div>
+  </div>
+</nav>

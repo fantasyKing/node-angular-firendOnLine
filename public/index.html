@@ -11,31 +11,9 @@
     <link rel="stylesheet" type="text/css" href="/styles/animate.min.css">
 
   </head>
-  <body ng-app="myApp">
+  <body ng-app="myApp" ng-controller="indexCtrl">
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#" style="width: 55px;margin-top: -5px;">
-            <img class="img-responsive img-circle" alt="Brand" src="/images/brand/eye.jpg">
-          </a>
-        </div>
-        <div class="mybar">
-          <p class="navbar-text">Signed in as Mark Otto</p>
-          <div class="mytitle">
-            <a class="navbar-brand mybrand" href="#">
-              <img class="img-responsive img-rounded" alt="Brand" src="/images/lufei.jpg">
-            </a>
-            <div class="myperson">
-              <a href="#">张国金</a>
-              <a href="#">2天</a>
-            </div>
-          </div>
-          <button type="button" class="btn btn-default navbar-btns">Sign in</button>
-        </div>
-      </div>
-    </nav>
-
+    <my-nav-bar bar-show-flag="barShowFlag" bar-title="barTitle" bar-user-image="barUserImage" bar-username="barUsername" bar-btn-msg="barBtnMsg"></my-nav-bar>
     <div ui-view>
     </div>
 
@@ -50,10 +28,12 @@
     <script src="/javascripts/services/httpIntercepter.js"></script>
     <script src="/javascripts/services/login.js"></script>
     <script src="/javascripts/services/usersave.js"></script>
+    <script src="/javascripts/services/bar.js"></script>
     <script src="/javascripts/controllers/login.js"></script>
     <script src="/javascripts/controllers/main.js"></script>
     <script src="/javascripts/directives/validate.js"></script>
     <script src="/javascripts/directives/alert.js"></script>
+    <script src="/javascripts/directives/bar.js"></script>
     <script src="/javascripts/animation/animate.js"></script>
 
   </body>

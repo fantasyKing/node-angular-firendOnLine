@@ -28,7 +28,7 @@ a{
 }
 .myperson a{
     display: block;
-    padding-top: 4px;
+    padding-top: 10px;
 }
 .mytitle{
     position: relative;
