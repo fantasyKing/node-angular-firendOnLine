@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>个人网站</title>
 
-    <link href="/javascripts/components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="/styles/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/styles/loginStyle.css">
-    <link rel="stylesheet" type="text/css" href="/styles/animate.min.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>个人网站</title>
 
-  </head>
-  <body ng-app="myApp" ng-controller="indexCtrl">
+  <link href="/javascripts/components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="/styles/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/styles/loginStyle.css">
+  <link rel="stylesheet" type="text/css" href="/styles/animate.min.css">
 
-    <my-nav-bar bar-show-flag="barShowFlag" bar-title="barTitle" bar-user-image="barUserImage" bar-username="barUsername" bar-btn-msg="barBtnMsg"></my-nav-bar>
-    <div ui-view>
-    </div>
+</head>
 
-    <script type="text/javascript" src="/javascripts/components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="/javascripts/components/angular/angular.js"></script>
-    <script type="text/javascript" src="/javascripts/components/bootstrap/dist/js/bootstrap.js"></script>
-    <script type="text/javascript" src="/javascripts/components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script type="text/javascript" src="/javascripts/components/angular-animate/angular-animate.js"></script>
+<body ng-app="myApp" ng-controller="indexCtrl">
 
-    <script src="/app.js"></script>
-    <script src="/javascripts/services/register.js"></script>
-    <script src="/javascripts/services/httpIntercepter.js"></script>
-    <script src="/javascripts/services/login.js"></script>
-    <script src="/javascripts/services/usersave.js"></script>
-    <script src="/javascripts/services/bar.js"></script>
-    <script src="/javascripts/controllers/login.js"></script>
-    <script src="/javascripts/controllers/main.js"></script>
-    <script src="/javascripts/directives/validate.js"></script>
-    <script src="/javascripts/directives/alert.js"></script>
-    <script src="/javascripts/directives/bar.js"></script>
-    <script src="/javascripts/animation/animate.js"></script>
+  <my-nav-bar bar-show-flag="barShowFlag" bar-title="barTitle" bar-user-image="barUserImage" bar-username="barUsername" bar-btn-msg="barBtnMsg"></my-nav-bar>
+  <div ui-view>
+  </div>
 
-  </body>
+  <script type="text/javascript" src="/javascripts/components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="/javascripts/components/angular/angular.js"></script>
+  <script type="text/javascript" src="/javascripts/components/bootstrap/dist/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/javascripts/components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script type="text/javascript" src="/javascripts/components/angular-animate/angular-animate.js"></script>
+
+  <script src="/app.js"></script>
+  <script src="/javascripts/services/register.js"></script>
+  <script src="/javascripts/services/httpIntercepter.js"></script>
+  <script src="/javascripts/services/login.js"></script>
+  <script src="/javascripts/services/usersave.js"></script>
+  <script src="/javascripts/services/bar.js"></script>
+  <script src="/javascripts/controllers/login.js"></script>
+  <script src="/javascripts/controllers/main.js"></script>
+  <script src="/javascripts/directives/validate.js"></script>
+  <script src="/javascripts/directives/alert.js"></script>
+  <script src="/javascripts/directives/bar.js"></script>
+  <script src="/javascripts/directives/leftbar.js"></script>
+  <script src="/javascripts/animation/animate.js"></script>
+
+</body>
+
 </html>

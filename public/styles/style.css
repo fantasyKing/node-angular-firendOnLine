@@ -1,40 +1,76 @@
-body{
+body {
     padding: 50px;
     font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
-a{
+a {
     color: #00b7ff;
 }
 
-.mybar{
+.mybar {
     float: left;
     width: 80%;
     padding-left: 30%;
 }
-.mybar p{
+
+.mybar p {
     float: left;
     position: relative;
     width: 420px;
 }
-.mybar div{
+
+.mybar div {
     float: left;
 }
-.mybar button{
+
+.mybar button {
     float: left;
     position: relative;
     left: 20%;
     margin-top: 7px;
 }
-.myperson a{
+
+.myperson a {
     display: block;
     padding-top: 10px;
 }
-.mytitle{
+
+.mytitle {
     position: relative;
 }
-.mybrand{
+
+.mybrand {
     padding: 8px 8px;
     width: 55px;
     margin-top: -5px;
+}
+
+.leftbar {
+    position: absolute;
+    left: 0px;
+    width: 17%;
+    height: 100%;
+}
+
+.leftbar ul {
+    height: 100%;
+    background: cornsilk;
+}
+
+.leftbar ul li {
+    height: 50px;
+}
+
+.leftbar ul li a {
+    font-size: 15px;
+    height: 100%;
+    padding: 15px 15px;
+}
+
+.myicon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 20px;
+    color: #F7C49C;
 }
