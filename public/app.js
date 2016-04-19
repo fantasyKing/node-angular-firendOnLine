@@ -1,3 +1,4 @@
+/// <reference path="D:\nodejs-workspace\nodejs\node-angular-FriendLine\typings\tsd.d.ts" />
 angular
   .module('myApp', [
     'myApp.controller',
@@ -7,8 +8,9 @@ angular
     'ui.router',
     'ngAnimate'
   ])
-  .run(function($state) {
+  .run(function($state, userSaveService) {
     console.log('.run方法执行了');
+    var user = userSaveService.getUser();
   })
   .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     $stateProvider
@@ -30,9 +32,36 @@ angular
       })
       .state('main', {
         url: '/main',
+        abstract: true,
         templateUrl: '/pages/main.html',
         controller: 'mainCtrl'
-      });
+      })
+      .state('main.sy', {
+        url: '/main/sy',
+        templateUrl: '/pages/sy.html',
+        controller: 'syCtrl'
+      })
+      .state('main.ywxg', {
+        url: '/main/ywxg',
+        templateUrl: '/pages/ywxg.html',
+        controller: 'ywxgCtrl'
+      })
+      .state('main.chat', {
+        url: '/main/chat',
+        templateUrl: '/pages/chat.html',
+        controller: 'chatCtrl'
+      })
+      .state('main.picture', {
+        url: '/main/picture',
+        templateUrl: '/pages/picture.html',
+        controller: 'pictureCtrl'
+      })
+      .state('main.grxx', {
+        url: '/main/grxx',
+        templateUrl: '/pages/grxx.html',
+        controller: 'grxxCtrl'
+      })
+
 
     $urlRouterProvider.otherwise('/login/loginlo');
     $httpProvider.defaults.transformResponse.push(function(response) {

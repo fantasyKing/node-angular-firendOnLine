@@ -2,3 +2,5 @@ node_modules/
 access.log
 npm-debug.log
 .vscode/
+tsd.json
+typings/

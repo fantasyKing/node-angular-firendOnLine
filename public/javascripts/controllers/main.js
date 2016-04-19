@@ -8,7 +8,7 @@ angular.module('myApp.controller')
   barService.setOption(option);
 })
 
-.controller('mainCtrl', function(barService, userSaveService, $timeout, $scope) {
+.controller('mainCtrl', function(barService, userSaveService, $timeout, $scope, leftbarService) {
   var user = userSaveService.getUser();
   var option = {
     flag: true,
@@ -18,9 +18,12 @@ angular.module('myApp.controller')
     btnmsg: '退  出'
   };
   barService.setOption(option);
-  $scope.index = 5;
-  $scope.chatIndex = 0;
-  $timeout(function() {
-    $scope.chatIndex = 5;
-  }, 2000)
+  leftbarService.setScope($scope);
+
+  var option_ = {
+    chatIndex: 0,
+    commentIndex: 0
+  }
+
+  leftbarService.setOption(option_);
 });

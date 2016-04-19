@@ -1,5 +1,6 @@
+/// <reference path="D:\nodejs-workspace\nodejs\node-angular-FriendLine\typings\tsd.d.ts" />
 angular.module('myApp.directive')
-    .directive("leftBar", function($timeout) {
+    .directive("leftBar", function($timeout, $state) {
         return {
             restrict: 'E',
             replace: true,
@@ -10,11 +11,12 @@ angular.module('myApp.directive')
             },
             templateUrl: '/template/leftbar.html',
             link: function(scope, element, attrs) {
-                var state = scope.state || 'sy_state';
+                var state = scope.state || 'sy';
                 element.find("li").each(function(index, ele) {
-                    if (angular.equals($(ele).attr("id"), state)) {
+                    if (angular.equals($(ele).attr("id"), state + '_state')) {
                         element.find("li.active").removeClass("active");
                         $(ele).addClass("active");
+                        $state.go('main.' + scope.state);
                     }
                     $(ele).bind("click", function(e) {
                         e.preventDefault();
@@ -22,6 +24,8 @@ angular.module('myApp.directive')
                             element.find("li.active").removeClass("active");
                             $(e.currentTarget).addClass("active");
                         }
+                        var clickId = $(e.currentTarget).attr('id');
+                        $state.go('main.' + clickId.substring(0, clickId.indexOf('_')));
                     });
                 });
             }

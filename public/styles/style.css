@@ -74,3 +74,8 @@ a {
     font-size: 20px;
     color: #F7C49C;
 }
+
+.viewstyle {
+    width: 85%;
+    float: right;
+}
