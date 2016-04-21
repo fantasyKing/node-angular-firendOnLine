@@ -23,6 +23,10 @@ router.post('/login', function(req, res, next) {
 router.get('/checkLogin', function(req, res, next) {
   login.getUserInSession(req, res, next);
 });
+
+router.get('/loginout', function(req, res, next) {
+  login.loginout(req, res, next);
+});
 //没有匹配的路由，有err参数应该不会走这个中间件了
 router.use(function(req, res, next) {
   console.log(req.url);

@@ -1,20 +1,12 @@
+/// <reference path="D:\nodejs-workspace\nodejs\node-angular-FriendLine\typings\tsd.d.ts" />
 angular.module('myApp.controller', [])
-  .controller('loginCtrl', function($scope, $rootScope, $state) {
-    $scope.alertShow = false;
-    $scope.msg = "";
-    $scope.title = "";
-    $scope.alertType = "alert-danger";
-    $scope.$on('showAlert', function(scope, title, msg, alertType) {
-      $scope.title = title;
-      $scope.msg = msg;
-      $scope.alertType = alertType;
-      $scope.alertShow = true;
-    });
-    $scope.$on('hideAlert', function() {
-      $scope.alertShow = false;
+  .controller('loginCtrl', function($scope, $rootScope, $state, barService) {
+
+    barService.setOption({
+      flag: false
     });
   })
-  .controller('loginloCtrl', function($scope, $state, $timeout, loginService, userSaveService, leftbarService) {
+  .controller('loginloCtrl', function($scope, $state, $timeout, loginService, userSaveService, leftbarService, alertService) {
     $scope.goRegister = function() {
       $scope.showflag = false;
       $timeout(function() {
@@ -34,25 +26,25 @@ angular.module('myApp.controller', [])
         var result = data[0];
         if (result.flag) {
           userSaveService.save(result.data);
-          $scope.tilte = '成功';
-          $scope.msg = '登录成功！';
-          $scope.alertType = 'alert-success';
-          $scope.$emit('showAlert', $scope.tilte, $scope.msg, $scope.alertType);
-          $timeout(function() {
-            $scope.$emit('hideAlert', $scope);
-          }, 3000);
+          var option = {
+            title: '成功',
+            msg: '登录成功！',
+            alertType: 'alert-success',
+            alertShow: true
+          };
+          alertService.setOption(option);
           leftbarService.setOption({
             state: 'sy'
           });
           $state.go('main.sy');
         } else {
-          $scope.tilte = '失败';
-          $scope.msg = '登录失败！';
-          $scope.alertType = 'alert-danger';
-          $scope.$emit('showAlert', $scope.tilte, $scope.msg, $scope.alertType);
-          $timeout(function() {
-            $scope.$emit('hideAlert', $scope);
-          }, 3000);
+          var option = {
+            title: '失败',
+            msg: result.msg,
+            alertType: 'alert-danger',
+            alertShow: true
+          };
+          alertService.setOption(option);
         }
       }).error(function(data) {
 
@@ -60,7 +52,7 @@ angular.module('myApp.controller', [])
 
     };
   })
-  .controller('registerCtrl', function($scope, $rootScope, $state, $timeout, registerService, $window) {
+  .controller('registerCtrl', function(alertService, $scope, $rootScope, $state, $timeout, registerService, $window) {
     $scope.toLogin = function() {
       $scope.showflag = false;
       $timeout(function() {
@@ -81,30 +73,33 @@ angular.module('myApp.controller', [])
         registerService.register(submitData).success(function(data) {
           var resData = data[0];
           if (resData.flag) {
-            $scope.tilte = '成功';
-            $scope.msg = '注册成功！';
-            $scope.alertType = 'alert-success';
-            $scope.$emit('showAlert', $scope.tilte, $scope.msg, $scope.alertType);
-            $timeout(function() {
-              $scope.$emit('hideAlert', $scope);
-            }, 3000);
+            var option = {
+              title: '成功',
+              msg: '注册成功！',
+              alertType: 'alert-success',
+              alertShow: true
+            };
+            alertService.setOption(option);
           } else {
-            $scope.tilte = '警告';
-            $scope.msg = resData.msg;
-            $scope.alertType = 'alert-danger';
-            $scope.$emit('showAlert', $scope.tilte, $scope.msg, $scope.alertType);
-            $timeout(function() {
-              $scope.$emit('hideAlert', $scope);
-            }, 3000);
+            var option = {
+              title: '警告',
+              msg: resData.msg,
+              alertType: 'alert-danger',
+              alertShow: true
+            };
+            alertService.setOption(option);
           }
         }).error(function(err) {
           console.log(err);
         });
       } else {
-        $scope.$emit('showAlert', $scope.tilte, $scope.msg, $scope.alertType);
-        $timeout(function() {
-          $scope.$emit('hideAlert', $scope);
-        }, 3000);
+        var option = {
+          title: $scope.tilte,
+          msg: $scope.msg,
+          alertType: $scope.alertType,
+          alertShow: true
+        };
+        alertService.setOption(option);
       }
     };
   });

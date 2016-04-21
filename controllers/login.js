@@ -52,4 +52,26 @@ exports.getUserInSession = function(req, res, next) {
       }]
     });
   }
+};
+exports.loginout = function(req, res, next) {
+  if (req.session.user) {
+    req.session.user = '';
+    return res.json({
+      errcode: 0,
+      errmsg: '',
+      data: [{
+        flag: true,
+        msg: '退出成功',
+      }]
+    });
+  } else {
+    return res.json({
+      errcode: 0,
+      errmsg: '',
+      data: [{
+        flag: true,
+        msg: '退出成功',
+      }]
+    });
+  }
 }

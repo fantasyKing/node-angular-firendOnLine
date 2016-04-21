@@ -10,6 +10,17 @@ angular.module('myApp.directive')
                 commentIndex: '='
             },
             templateUrl: '/template/leftbar.html',
+            controller: function($scope, $element) {
+                this.setState = function(state) {
+                    $element.find('li').each(function(index, ele) {
+                        if (angular.equals($(ele).attr("id"), state + '_state')) {
+                            $element.find("li.active").removeClass("active");
+                            $(ele).addClass("active");
+                            $state.go('main.' + state);
+                        }
+                    });
+                }
+            },
             link: function(scope, element, attrs) {
                 var state = scope.state || 'sy';
                 element.find("li").each(function(index, ele) {

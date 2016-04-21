@@ -1,11 +1,16 @@
 angular.module('myApp.controller')
 
-.controller('indexCtrl', function(barService, $scope) {
+.controller('indexCtrl', function(barService, alertService, $scope) {
   barService.setScope($scope);
   var option = {
     flag: false
   };
   barService.setOption(option);
+  alertService.setScope($scope);
+  var option = {
+    alertShow: false
+  };
+  alertService.setOption(option);
 })
 
 .controller('mainCtrl', function(barService, userSaveService, $timeout, $scope, leftbarService) {
