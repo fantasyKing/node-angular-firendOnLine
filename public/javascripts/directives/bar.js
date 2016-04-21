@@ -1,5 +1,5 @@
 angular.module('myApp.directive')
-  .directive('myNavBar', function(loginoutService, $state, alertService, userSaveService) {
+  .directive('myNavBar', function(loginoutService, $state, alertService, userSaveService, leftbarService) {
     return {
       restrict: 'E',
       replace: true,
@@ -11,8 +11,8 @@ angular.module('myApp.directive')
         barBtnMsg: '=',
       },
       templateUrl: '/template/navbar.html',
-      link: function(scope, elemtent, attrs, ctrls) {
-        elemtent.find('button').bind('click', function() {
+      link: function(scope, element, attrs, ctrls) {
+        element.find('button').bind('click', function() {
           loginoutService.loginout().success(function(data) {
             var resulst = data[0];
             if (resulst.flag) {
@@ -44,6 +44,13 @@ angular.module('myApp.directive')
             alertService.setOption(option);
           });
         });
+        element.find('.mybar a').bind('click', function() {
+          leftbarService.setOption({
+            state: 'grxx'
+          });
+          $state.go('main.grxx');
+        });
+
       }
     };
   });

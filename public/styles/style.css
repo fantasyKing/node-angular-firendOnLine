@@ -13,6 +13,14 @@ a {
     padding-left: 30%;
 }
 
+.mybar a {
+    cursor: pointer;
+}
+
+.mybar a:hover {
+    text-decoration: none;
+}
+
 .mybar p {
     float: left;
     position: relative;

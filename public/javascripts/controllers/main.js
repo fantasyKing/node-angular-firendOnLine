@@ -27,7 +27,8 @@ angular.module('myApp.controller')
 
   var option_ = {
     chatIndex: 0,
-    commentIndex: 0
+    commentIndex: 0,
+    state: 'sy'
   }
 
   leftbarService.setOption(option_);
