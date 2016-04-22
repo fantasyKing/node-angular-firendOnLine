@@ -1,3 +1,4 @@
+/// <reference path="D:\nodejs-workspace\nodejs\node-angular-FriendLine\typings\tsd.d.ts" />
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,7 +12,9 @@ var settings = require('./settings');
 var routes = require('./routes/index');
 
 var fs = require('fs');
-var accessLog = fs.createWriteStream('access.log',{flags:'a'});
+var accessLog = fs.createWriteStream('access.log', {
+  flags: 'a'
+});
 
 var app = express();
 
@@ -21,23 +24,29 @@ app.set('view engine', 'ejs');
 // app.engine('html', require('ejs').renderFile);
 // app.set('view engine', 'html');
 
-app.use(favicon(path.join(__dirname, 'public', 'images','fav.png')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'fav.png')));
 app.use(logger('dev'));
-app.use(logger({stream:accessLog}));
+app.use(logger({
+  stream: accessLog
+}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret : settings.cookieSecret,
-  key : settings.db,
-  cookie : {maxAge : 1000*60*60*24},
-  store : new MongoStore({
+  secret: settings.cookieSecret,
+  key: settings.db,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24
+  },
+  store: new MongoStore({
     url: settings.url,
   }),
   resave: settings.resave,
-  saveUninitialized : settings.saveUninitialized
+  saveUninitialized: settings.saveUninitialized
 }));
 
 app.use('/', routes);
@@ -56,7 +65,7 @@ if (app.get('env') === 'development') {
     console.log(err.message);
     res.json({
       'errcode': 1,
-      'errmsg':err.message
+      'errmsg': err.message
     });
   });
 }
@@ -66,7 +75,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json({
     'errcode': 1,
-    'errmsg':err.message
+    'errmsg': err.message
   });
 });
 

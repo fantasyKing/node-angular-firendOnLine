@@ -11,7 +11,7 @@ angular.module('myApp.service')
       } else {
         var option = {
           title: '警告',
-          msg: '您还没有登录，请重新登录！',
+          msg: '您还没有登录，请登录！',
           alertShow: true,
           alertType: 'alert-danger'
         };
