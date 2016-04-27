@@ -1,12 +1,35 @@
+///<reference path="D:\nodejs-workspace\nodejs\node-angular-FriendLine\typings\mongoose\mongoose.d.ts" />
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var utility = require('utility');
 
 var UserSchema = new Schema({
-  name: { type:String},
-  loginName:{ type:String,required:true},
-  pass:{ type:String,required:true},
-  opptime:{ type:Date, default:Date.now}
+  name: {
+    type: String
+  },
+  loginName: {
+    type: String,
+    required: true
+  },
+  pass: {
+    type: String,
+    required: true
+  },
+  title: {
+    type: String
+  },
+  rooms: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Room'
+  }],
+  friends: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  joined: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-mongoose.model('User',UserSchema);
+mongoose.model('User', UserSchema);
