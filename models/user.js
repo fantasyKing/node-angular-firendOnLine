@@ -1,7 +1,6 @@
 ///<reference path="D:\nodejs-workspace\nodejs\node-angular-FriendLine\typings\mongoose\mongoose.d.ts" />
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var utility = require('utility');
 
 var UserSchema = new Schema({
   name: {
